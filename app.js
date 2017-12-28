@@ -26,7 +26,7 @@
                                     method: 'GET',
                                     url: `https://cors-anywhere.herokuapp.com/${csvEndPoint}`,
                                     headers: {
-                                        Origin: window.location.host,
+                                        'x-requested-with': window.location.host,
                                     },
                                 })
                                 : await $http.get(`http://cors-proxy.htmldriven.com/?url=${csvEndPoint}`)
