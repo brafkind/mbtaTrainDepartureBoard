@@ -16,11 +16,20 @@
                 dataSource: new DevExpress.data.DataSource({
                     loadMode: 'raw',
                     load: async () => {
+                        const csvEndPoint = 'http://developer.mbta.com/lib/gtrtfs/Departures.csv';
                         let resp, data;
 
                         try {
                             // use a CORS proxy since the data feed is restricted to the mbta.com domain
-                            resp = await $http.get('http://cors-proxy.htmldriven.com/?url=http://developer.mbta.com/lib/gtrtfs/Departures.csv');
+                            resp = window.location.protocol === 'https'
+                                ? await $http({
+                                    method: 'GET',
+                                    url: `https://cors-anywhere.herokuapp.com/${csvEndPoint}`,
+                                    headers: {
+                                        Origin: window.location.host,
+                                    },
+                                })
+                                : await $http.get(`http://cors-proxy.htmldriven.com/?url=${csvEndPoint}`)
                         } catch (err) {
                             throw err.data;
                         }
