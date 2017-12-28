@@ -1,4 +1,4 @@
-# mbtaTrainDepartureBoard
+# MBTA Train Departure Board
 MBTA Train Departure Board
 
 Features:
