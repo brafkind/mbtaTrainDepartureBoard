@@ -21,7 +21,7 @@
 
                         try {
                             // use a CORS proxy since the data feed is restricted to the mbta.com domain
-                            resp = window.location.protocol === 'https'
+                            resp = window.location.protocol === 'https:'
                                 ? await $http({
                                     method: 'GET',
                                     url: `https://cors-anywhere.herokuapp.com/${csvEndPoint}`,
