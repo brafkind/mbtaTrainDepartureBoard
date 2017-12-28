@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app='mbta'>
+    <head>
+        <meta charset="UTF-8">
+        <title>MBTA Live Train Departure Board</title>
+
+        <!-- tab icon -->
+        <link rel="icon" href="https://d3044s2alrsxog.cloudfront.net/images/mbta-logo-t-favicon-86d6bc07973596dbd09bc4e81f3577f6.png?vsn=d" sizes="32x32" type="image/png">
+        <link rel="icon" href="https://d3044s2alrsxog.cloudfront.net/favicon-a2744f999c9bd71bc0461d888413d17e.ico?vsn=d" sizes="16x16" type="image/vnd.microsoft.icon">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+        <!-- DevExtreme dependencies -->
+        <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.1.0.min.js"></script>
+        <!-- The AngularJS library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
+        <!-- DevExtreme themes -->
+        <link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/17.2.4/css/dx.common.css" />
+        <link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/17.2.4/css/dx.light.css" />
+        <!-- A DevExtreme library -->
+        <script type="text/javascript" src="https://cdn3.devexpress.com/jslib/17.2.4/js/dx.all.js"></script>
+
+        <script src="app.js"></script>
+    </head>
+
+    <body ng-controller='TrainDepartureBoardController as vm' class='container-fluid' style='background-color:lightgrey'>
+        <div class='row justify-content-center'>
+            <div class='col-md-auto col-12 py-3 rounded' style='background-color:white'>
+                <img src='https://d3044s2alrsxog.cloudfront.net/images/mbta-logo-a714a42a6478bb5ed4de5917914abec7.png?vsn=d' width='270px'/>
+                
+                <h1>Live Train Departure Board</h1>
+                <dx-data-grid dx-data-grid="vm.dxGridOptions" style='max-width:600px'></dx-data-grid>
+            </div>
+        </div>
+    </body>
+
+</html>
