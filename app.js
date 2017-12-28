@@ -16,26 +16,23 @@
                 dataSource: new DevExpress.data.DataSource({
                     loadMode: 'raw',
                     load: async () => {
-                        const csvEndPoint = 'http://developer.mbta.com/lib/gtrtfs/Departures.csv';
                         let resp;
 
                         try {
                             // use a CORS proxy since the data feed is restricted to the mbta.com domain
-                            resp = window.location.protocol.startsWith('https')
-                                ? (await $http({
-                                    method: 'GET',
-                                    url: `https://cors-anywhere.herokuapp.com/${csvEndPoint}`,
-                                    headers: {
-                                        'x-requested-with': window.location.host,
-                                    },
-                                })).data
-                                : (await $http.get(`http://cors-proxy.htmldriven.com/?url=${csvEndPoint}`)).data.body
+                            resp = await $http({
+                                method: 'GET',
+                                url: `https://cors-anywhere.herokuapp.com/http://developer.mbta.com/lib/gtrtfs/Departures.csv`,
+                                headers: {
+                                    'x-requested-with': window.location.host,
+                                },
+                            });
                         } catch (err) {
                             throw err.data;
                         }
 
                         // extract csv data from the response
-                        let data = resp.replace(/"/g,'').split('\r\n').map(line => line.split(',')).filter(row => row.length === 8);
+                        let data = resp.data.replace(/"/g,'').split('\r\n').map(line => line.split(',')).filter(row => row.length === 8);
 
                         // display example data if the feed was empty
                         if (data.length < 2) {
